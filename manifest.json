@@ -1,0 +1,15 @@
+{
+    "name": "mahadev-gpt",
+    "version": "0.0.13",
+    "description": "An AI-Driven Code Wrangler (use chatGPT internally)",
+    "main": "./extension.js",
+    "contributes": {
+      "commands": [
+        {
+          "command": "mahadev-gpt.config",
+          "title": "Enter OPENAI API key here... "
+        }
+      ]
+    },
+    "activationEvents": ["onCommand:mahadev-gpt.config"]
+  }

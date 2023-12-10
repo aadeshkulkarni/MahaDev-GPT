@@ -1,0 +1,169 @@
+{
+  "name": "mahadev-gpt",
+  "displayName": "MahaDev",
+  "description": "An AI-Driven Code Wrangler (use chatGPT internally)",
+  "version": "0.0.13",
+  "keywords": [
+    "Chat GPT",
+    "Code cognition"
+  ],
+  "icon": "images/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aadeshkulkarni/mahadev-gpt"
+  },
+  "engines": {
+    "vscode": "^1.65.0"
+  },
+  "publisher": "Aadesh",
+  "categories": [
+    "Data Science",
+    "Machine Learning",
+    "Programming Languages",
+    "Snippets",
+    "Testing",
+    "Linters",
+    "Education",
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "mahadev-gpt.config",
+    "mahadev-gpt.genCode",
+    "mahadev-gpt.analyseCode",
+    "mahadev-gpt.docString",
+    "mahadev-gpt.optimise",
+    "mahadev-gpt.refactor"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "API Key",
+      "properties": {
+        "mahadev-gpt.apiKey": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "mahadev-gpt.config",
+        "title": "MahaDev GPT | Set API Key"
+      },
+      {
+        "command": "mahadev-gpt.genCode",
+        "title": "MahaDev GPT | Generate code"
+      },
+      {
+        "command": "mahadev-gpt.docString",
+        "title": "MahaDev GPT | Generate doc-string"
+      },
+      {
+        "command": "mahadev-gpt.analyseCode",
+        "title": "MahaDev GPT | Explain code"
+      },
+      {
+        "command": "mahadev-gpt.optimise",
+        "title": "MahaDev GPT | Optimise code"
+      },
+      {
+        "command": "mahadev-gpt.refactor",
+        "title": "MahaDev GPT | Refactor code"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "mahadev-gpt.genCode",
+        "key": "cmd+shift+g"
+      },
+      {
+        "command": "mahadev-gpt.genCode",
+        "key": "ctrl+shift+g"
+      },
+      {
+        "command": "mahadev-gpt.analyseCode",
+        "title": "MahaDev GPT | Explain",
+        "key": "cmd+shift+a"
+      },
+      {
+        "command": "mahadev-gpt.analyseCode",
+        "title": "MahaDev GPT | Explain",
+        "key": "ctrl+shift+a"
+      },
+      {
+        "command": "mahadev-gpt.docString",
+        "title": "MahaDev GPT | Generate doc-string",
+        "key": "cmd+shift+d"
+      },
+      {
+        "command": "mahadev-gpt.docString",
+        "title": "MahaDev GPT | Generate doc-string",
+        "key": "ctrl+shift+d"
+      },
+      {
+        "command": "mahadev-gpt.optimise",
+        "title": "MahaDev GPT | Optimise code",
+        "key": "cmd+shift+o"
+      },
+      {
+        "command": "mahadev-gpt.refactor",
+        "title": "MahaDev GPT | Refactor code",
+        "key": "cmd+shift+r"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "mahadev-gpt.config",
+          "title": "MahaDev GPT | Set API Key"
+        },
+        {
+          "command": "mahadev-gpt.genCode",
+          "title": "MahaDev GPT | Generate code"
+        },
+        {
+          "command": "mahadev-gpt.analyseCode",
+          "title": "MahaDev GPT | Explain code"
+        },
+        {
+          "command": "mahadev-gpt.docString",
+          "title": "MahaDev GPT | Generate doc-string"
+        },
+        {
+          "command": "mahadev-gpt.optimise",
+          "title": "MahaDev GPT | Optimise code"
+        },
+        {
+          "command": "mahadev-gpt.refactor",
+          "title": "MahaDev GPT | Refactor code"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./extension.js --bundle --outfile=out/main.js --external:vscode --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.65.0",
+    "@vscode/test-electron": "^2.2.3",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.17.10",
+    "eslint": "^8.34.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "openai": "^3.1.0"
+  }
+}
